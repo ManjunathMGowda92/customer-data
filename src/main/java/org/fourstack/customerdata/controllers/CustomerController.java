@@ -1,28 +1,20 @@
 package org.fourstack.customerdata.controllers;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.fourstack.customerdata.model.RetrieveDataRequest;
+import org.fourstack.customerdata.model.database.Customer;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
-	
-	
-	@GetMapping("/v1/test")
-	public String test() {
-		return "App is running!!!";
-	}
-	
-	@GetMapping("/v1/customers/retrieveCustomer")
-	public String retrieveCustomerData(){
+
+	@PostMapping("/v1/customers/retrieveCustomer")
+	public String retrieveCustomerData(@RequestBody RetrieveDataRequest request){
 		return "retrieveCustomerData";
 	}
 	
-	@GetMapping("/v1/customers/createCustomer")
+	@PostMapping("/v1/customers/createCustomer")
 	public String createCustomerData(){
 		return "createCustomerData";
 	}
@@ -32,14 +24,19 @@ public class CustomerController {
 		return "updateCustomerData";
 	}
 	
-	@PatchMapping("/v1/customers/updateCustomer")
-	public String patchCustomerData() {
+	@PatchMapping("/v1/customers/updateCustomer/{customer-id}")
+	public String patchCustomerData(@PathVariable("customer-id") long customerId, @RequestBody Customer customer) {
 		return "patchCustomerData";
 	}
 	
-	@DeleteMapping("/v1/customers/deleteCustomer")
-	public String deleteCustomerData() {
+	@DeleteMapping("/v1/customers/deleteCustomer/{customer-id}")
+	public String deleteCustomerData(@PathVariable("customer-id") long customerId) {
 		return "deleteCustomerData";
+	}
+
+	@DeleteMapping("/v1/customers/{customer-account-num}")
+	public String deleteCustomerByAccountNum(@PathVariable("customer-account-num") String accountNumber) {
+		return "Delete Customer By Account Num";
 	}
 
 }

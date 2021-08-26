@@ -1,4 +1,4 @@
-package org.fourstack.customerdata.model;
+package org.fourstack.customerdata.model.database;
 
 import java.time.LocalDateTime;
 
