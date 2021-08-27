@@ -12,4 +12,6 @@ public class CompleteAccountCreationRequest {
     private CustomerRequest customer;
     private AccountInfoRequest customerAccountInfo;
     private PartyRequest partyInfo;
+
+    private String srcSystem;
 }

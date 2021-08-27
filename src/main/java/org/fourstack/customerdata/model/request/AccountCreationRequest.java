@@ -11,4 +11,6 @@ public class AccountCreationRequest {
 
     private CustomerRequest customer;
     private AccountInfoRequest customerAccountInfo;
+
+    private String srcSystem;
 }
