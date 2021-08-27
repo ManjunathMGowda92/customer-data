@@ -1,4 +1,4 @@
-package org.fourstack.customerdata.model;
+package org.fourstack.customerdata.model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
