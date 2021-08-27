@@ -1,7 +1,8 @@
 package org.fourstack.customerdata.controllers;
 
-import io.swagger.annotations.ApiOperation;
-import org.fourstack.customerdata.model.RetrieveDataRequest;
+import org.fourstack.customerdata.model.request.AccountCreationRequest;
+import org.fourstack.customerdata.model.request.CompleteAccountCreationRequest;
+import org.fourstack.customerdata.model.request.RetrieveDataRequest;
 import org.fourstack.customerdata.model.database.Customer;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,14 @@ public class CustomerController {
 		return "retrieveCustomerData";
 	}
 	
+	@PostMapping("/v1/customers/createCustomerPartial")
+	public String createCustomerData(@RequestBody AccountCreationRequest request){
+		return "createCustomerData";
+	}
+
+
 	@PostMapping("/v1/customers/createCustomer")
-	public String createCustomerData(){
+	public String createCustomerDataComplete(@RequestBody CompleteAccountCreationRequest request){
 		return "createCustomerData";
 	}
 	
