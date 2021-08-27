@@ -14,4 +14,6 @@ public class ContactRequest {
     private ContactMediumType contactMediumType;
     private ContactMediumSubType contactMediumSubType;
     private String contactMediumValue;
+
+    private String srcSystem;
 }

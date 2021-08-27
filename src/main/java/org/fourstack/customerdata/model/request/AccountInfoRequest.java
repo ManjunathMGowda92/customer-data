@@ -11,7 +11,9 @@ import org.fourstack.customerdata.codetype.AccountSystem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountInfoRequest {
 
-    private String customerAccountNumber;
-    private AccountSystem customerAccountSystem;
-    private AccountStatus customerAccountStatus;
+    private String accountNumber;
+    private AccountSystem accountSystem;
+    private AccountStatus accountStatus;
+
+    private String srcSystem;
 }

@@ -20,4 +20,6 @@ public class PartyRequest {
     private List<ContactRequest> contactProfileList;
 
     private List<AddressRequest> addressList;
+
+    private String srcSystem;
 }

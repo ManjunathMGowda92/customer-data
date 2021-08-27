@@ -15,4 +15,6 @@ public class CustomerRequest {
     private CustomerStatus customerStatus;
     private CustomerType customerType;
     private CustomerSubType customerSubType;
+
+    private String srcSystem;
 }
