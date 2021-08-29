@@ -1,0 +1,4 @@
+# Set Context Path
+server:
+  servlet:
+    context-path: /customer-data
