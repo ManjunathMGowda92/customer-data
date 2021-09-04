@@ -28,6 +28,6 @@ public class CustomerAddressServiceImpl implements  CustomerAddressService {
                 HttpStatus.OK.name(),
                 ADDRESS_UPDATED,
                 LocalDateTime.now(),
-                "UNKNOWN");
+                null);
     }
 }
