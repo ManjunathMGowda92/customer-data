@@ -2,3 +2,17 @@
 server:
   servlet:
     context-path: /customer-data
+
+# Spring DATA JPA and Hibernate Properties
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: create-drop
+
+# Enabling H2 Console
+h2:
+  console:
+    enabled: true
