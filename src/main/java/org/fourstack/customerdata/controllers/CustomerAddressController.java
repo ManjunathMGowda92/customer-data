@@ -22,14 +22,14 @@ public class CustomerAddressController {
 
     @PostMapping(path = "/v1/customer/{customer-account-num}/address", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CustomerDataResponse> addCustomerAddress(@PathVariable("customer-account-num") String accountNum,
-                                             @RequestBody AddressRequest address) {
+                                                                   @RequestBody AddressRequest address) {
         return new ResponseEntity <>(customerAddressService.addCustomerAddress(accountNum, address),
                 HttpStatus.CREATED);
     }
 
     @PatchMapping(path = "/v1/customer/{customer-account-num}/address", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CustomerDataResponse> patchCustomerAddress(@PathVariable("customer-account-num") String accountNum,
-                                       @RequestBody AddressRequest address) {
+                                                                     @RequestBody AddressRequest address) {
         return new ResponseEntity <>(customerAddressService.updateCustomerAddress(accountNum, address),
                 HttpStatus.OK);
     }

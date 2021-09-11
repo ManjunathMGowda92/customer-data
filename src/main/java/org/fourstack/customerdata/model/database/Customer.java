@@ -2,27 +2,69 @@ package org.fourstack.customerdata.model.database;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.fourstack.customerdata.codetype.CustomerStatus;
 import org.fourstack.customerdata.codetype.CustomerSubType;
 import org.fourstack.customerdata.codetype.CustomerType;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
+@Table(name = "customer")
 public class Customer {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "customer_id")
 	private long customerId;
+
+	@Column(name = "customer_status", length = 25, nullable = false)
+	@Enumerated(value = EnumType.STRING)
 	private CustomerStatus customerStatus;
+
+	@Column(name = "customer_type", length = 25, nullable = false)
+	@Enumerated(value = EnumType.STRING)
 	private CustomerType customerType;
+
+	@Column(name = "customer_subtype", length = 25, nullable = false)
+	@Enumerated(value = EnumType.STRING)
 	private CustomerSubType customerSubType;
-	
-	
+
+	@JsonIgnore
+	@Getter(value = AccessLevel.NONE)
+	@Setter(value = AccessLevel.NONE)
+	@Column(name = "create_usr")
 	private String createUser;
+
+	@JsonIgnore
+	@Getter(value = AccessLevel.NONE)
+	@Setter(value = AccessLevel.NONE)
+	@CreationTimestamp
+	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDate;
+
+	@JsonIgnore
+	@Getter(value = AccessLevel.NONE)
+	@Setter(value = AccessLevel.NONE)
+	@Column(name = "mod_usr")
 	private String modifiedUser;
+
+	@JsonIgnore
+	@Getter(value = AccessLevel.NONE)
+	@Setter(value = AccessLevel.NONE)
+	@UpdateTimestamp
+	@Column(name = "mod_date", nullable = true, updatable = true)
 	private LocalDateTime modifiedDate;
 
 }
