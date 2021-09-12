@@ -43,26 +43,22 @@ public class Customer {
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
 	@Column(name = "create_usr")
 	private String createUser;
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDate;
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
 	@Column(name = "mod_usr")
 	private String modifiedUser;
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
 	@UpdateTimestamp
 	@Column(name = "mod_date", nullable = true, updatable = true)
 	private LocalDateTime modifiedDate;
