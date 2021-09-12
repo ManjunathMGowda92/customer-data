@@ -1,6 +1,6 @@
 package org.fourstack.customerdata.services;
 
-import org.fourstack.customerdata.dao.CustomerDaoHelper;
+import org.fourstack.customerdata.helper.CustomerDaoHelper;
 import org.fourstack.customerdata.model.request.AccountCreationRequest;
 import org.fourstack.customerdata.model.request.CompleteAccountCreationRequest;
 import org.fourstack.customerdata.model.request.RetrieveDataRequest;
