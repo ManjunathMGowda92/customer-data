@@ -23,6 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerResponse> retrieveCustomerData(RetrieveDataRequest request) {
+        customerDaoHelper.retrieveCustomer(request);
         return null;
     }
 
