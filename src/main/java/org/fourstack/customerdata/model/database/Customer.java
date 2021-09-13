@@ -30,15 +30,12 @@ public class Customer {
 	private long customerId;
 
 	@Column(name = "customer_status", length = 25, nullable = false)
-	@Enumerated(value = EnumType.STRING)
 	private CustomerStatus customerStatus;
 
 	@Column(name = "customer_type", length = 25, nullable = false)
-	@Enumerated(value = EnumType.STRING)
 	private CustomerType customerType;
 
 	@Column(name = "customer_subtype", length = 25, nullable = false)
-	@Enumerated(value = EnumType.STRING)
 	private CustomerSubType customerSubType;
 
 	@JsonIgnore

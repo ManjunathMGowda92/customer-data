@@ -22,7 +22,6 @@ public class Party {
     private long partyId;
 
     @Column(name = "party_type", length = 25)
-    @Enumerated(EnumType.STRING)
     private PartyType partyType;
 
     @Column(name = "first_name")

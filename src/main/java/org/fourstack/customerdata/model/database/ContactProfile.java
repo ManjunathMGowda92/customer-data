@@ -32,11 +32,9 @@ public class ContactProfile {
     private String contactName;
 
     @Column(name = "contact_medium_type", length = 25)
-    @Enumerated(EnumType.STRING)
     private ContactMediumType contactMediumType;
 
     @Column(name = "contact_medium_subtype", length = 25)
-    @Enumerated(EnumType.STRING)
     private ContactMediumSubType contactMediumSubType;
 
     @Column(name = "contact_medium_value")
