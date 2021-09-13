@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RetrieveDataRequest {
-    private AccountCombination accountDetails;
-    private NameCombination nameDetails;
-    private ContactCombination contactDetails;
+public class AccountCombination {
+
+    private String customerAccountNumber;
+    private String customerAccountSystem;
 }

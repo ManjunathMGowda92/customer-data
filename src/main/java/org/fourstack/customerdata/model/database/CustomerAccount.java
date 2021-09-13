@@ -31,11 +31,9 @@ public class CustomerAccount {
 	private String accountNumber;
 
 	@Column(name = "account_system", nullable = false, length = 25)
-	@Enumerated(EnumType.STRING)
 	private AccountSystem accountSystem;
 
 	@Column(name = "account_status", nullable = false, length = 25)
-	@Enumerated(EnumType.STRING)
 	private AccountStatus accountStatus;
 
 	@CreationTimestamp

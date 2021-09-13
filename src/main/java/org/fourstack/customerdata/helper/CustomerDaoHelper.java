@@ -10,17 +10,24 @@ import static org.fourstack.customerdata.constants.CustomerConstants.HOUR_23;
 import static org.fourstack.customerdata.constants.CustomerConstants.MINUTE_59;
 import static org.fourstack.customerdata.constants.CustomerConstants.SECOND_59;
 
+import static org.fourstack.customerdata.util.CustomerDataUtil.isValidString;
+
+import org.fourstack.customerdata.codetype.AccountSystem;
+import org.fourstack.customerdata.converters.AccountSystemEnumConverter;
 import org.fourstack.customerdata.dao.CustomerAccountRepository;
 import org.fourstack.customerdata.dao.CustomerRepository;
 import org.fourstack.customerdata.model.database.Customer;
 import org.fourstack.customerdata.model.database.CustomerAccount;
-import org.fourstack.customerdata.model.request.AccountCreationRequest;
-import org.fourstack.customerdata.model.request.AccountInfoRequest;
-import org.fourstack.customerdata.model.request.CustomerRequest;
+import org.fourstack.customerdata.model.request.*;
+import org.fourstack.customerdata.model.response.CustomerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Component
 public class CustomerDaoHelper {
@@ -31,6 +38,9 @@ public class CustomerDaoHelper {
     @Autowired
     private CustomerAccountRepository accountRepository;
 
+    @Autowired
+    private AccountSystemEnumConverter accountSystemEnumConverter;
+
     public void createCustomerAccountPartial(AccountCreationRequest request) {
 
         CustomerRequest customer = request.getCustomer();
@@ -38,6 +48,47 @@ public class CustomerDaoHelper {
 
         long customerId = saveCustomer(customer, request.getSrcSystem());
         saveCustomerAccountInfo(customerAccountInfo, request.getSrcSystem(), customerId);
+    }
+
+    public void retrieveCustomer(RetrieveDataRequest request) {
+        AccountCombination accountDetails = request.getAccountDetails();
+        NameCombination nameDetails = request.getNameDetails();
+        ContactCombination contactDetails = request.getContactDetails();
+
+        List<CustomerResponse> customerResponseList = new ArrayList<>();
+
+        // Fetch Customer based on Account Details
+        if (accountDetails != null) {
+            if (isValidString(accountDetails.getCustomerAccountNumber()) && isValidString(accountDetails.getCustomerAccountSystem())) {
+
+               /* AccountSystem accountSystemEnum = Stream.of(AccountSystem.values())
+                        .filter(accountSystem -> accountSystem.name().equals(accountDetails.getCustomerAccountSystem()))
+                        .findFirst()
+                        .orElse(null);
+
+                System.out.println("ACCOUNT SYSTEM::"+accountSystemEnum+"    === "+accountSystemEnum.name());
+                */
+                Optional<CustomerAccount> optionalCustomerAccount = accountRepository.findByAccountNumberAndAccountSystem(
+                        accountDetails.getCustomerAccountNumber(),
+                        accountSystemEnumConverter.convertToEntityAttribute(accountDetails.getCustomerAccountSystem())
+                );
+
+                if (optionalCustomerAccount.isPresent()) {
+                    System.out.println(optionalCustomerAccount.get());
+                }
+            }
+        }
+
+        // Fetch Customer based on Name Details
+        if (nameDetails != null) {
+
+        }
+
+        // Fetch Customer based on Contact Details
+        if (contactDetails != null) {
+
+        }
+
     }
 
     private long saveCustomer(CustomerRequest customer, String sourceSystem) {

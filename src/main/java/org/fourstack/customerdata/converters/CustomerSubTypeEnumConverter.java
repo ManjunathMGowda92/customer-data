@@ -1,0 +1,37 @@
+package org.fourstack.customerdata.converters;
+
+import org.fourstack.customerdata.codetype.CustomerStatus;
+import org.fourstack.customerdata.codetype.CustomerSubType;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+import java.util.stream.Stream;
+
+/**
+ * AttributeConverter class which converts the Enum {@link CustomerSubType} to String value
+ * and vice-versa. This helps in storing Base values (Integer, long, String etc..) into Database
+ * without @Enumerated Enum support and convert back Base values to Enum.
+ *
+ * @author Manjunath HM
+ */
+@Component
+@Converter(autoApply = true)
+public class CustomerSubTypeEnumConverter implements AttributeConverter<CustomerSubType, String> {
+    @Override
+    public String convertToDatabaseColumn(CustomerSubType customerSubType) {
+        if (customerSubType == null)
+            return null;
+        return customerSubType.name();
+    }
+
+    @Override
+    public CustomerSubType convertToEntityAttribute(String str) {
+        if (str == null)
+            return null;
+        return Stream.of(CustomerSubType.values())
+                .filter(customerSubType -> customerSubType.name().equals(str))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+}
