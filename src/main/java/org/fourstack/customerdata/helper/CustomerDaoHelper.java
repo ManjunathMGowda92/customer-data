@@ -1,18 +1,5 @@
 package org.fourstack.customerdata.helper;
 
-import static org.fourstack.customerdata.codetype.CustomerStatus.INACTIVE;
-import static org.fourstack.customerdata.codetype.AccountStatus.PENDING;
-import static org.fourstack.customerdata.constants.CustomerConstants.DEFAULT_SRC_SYSTEM;
-import static org.fourstack.customerdata.constants.CustomerConstants.END_YEAR;
-import static org.fourstack.customerdata.constants.CustomerConstants.LAST_MONTH;
-import static org.fourstack.customerdata.constants.CustomerConstants.LAST_DATE;
-import static org.fourstack.customerdata.constants.CustomerConstants.HOUR_23;
-import static org.fourstack.customerdata.constants.CustomerConstants.MINUTE_59;
-import static org.fourstack.customerdata.constants.CustomerConstants.SECOND_59;
-
-import static org.fourstack.customerdata.util.CustomerDataUtil.isValidString;
-
-import org.fourstack.customerdata.codetype.AccountSystem;
 import org.fourstack.customerdata.converters.AccountSystemEnumConverter;
 import org.fourstack.customerdata.dao.CustomerAccountRepository;
 import org.fourstack.customerdata.dao.CustomerRepository;
@@ -27,7 +14,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+
+import static org.fourstack.customerdata.codetype.AccountStatus.PENDING;
+import static org.fourstack.customerdata.codetype.CustomerStatus.INACTIVE;
+import static org.fourstack.customerdata.constants.CustomerConstants.*;
+import static org.fourstack.customerdata.util.CustomerDataUtil.isValidString;
 
 @Component
 public class CustomerDaoHelper {
@@ -57,34 +48,27 @@ public class CustomerDaoHelper {
 
         List<CustomerResponse> customerResponseList = new ArrayList<>();
 
-        // Fetch Customer based on Account Details
-        if (accountDetails != null) {
-            if (isValidString(accountDetails.getCustomerAccountNumber()) && isValidString(accountDetails.getCustomerAccountSystem())) {
+        /* Fetch Customer based on Account Details i.e Account Number and Account System */
+        if (accountDetails != null && isValidString(accountDetails.getCustomerAccountNumber())
+                && isValidString(accountDetails.getCustomerAccountSystem())) {
 
-               /* AccountSystem accountSystemEnum = Stream.of(AccountSystem.values())
-                        .filter(accountSystem -> accountSystem.name().equals(accountDetails.getCustomerAccountSystem()))
-                        .findFirst()
-                        .orElse(null);
+            Optional<CustomerAccount> optionalCustomerAccount =
+                    accountRepository.findByAccountNumberAndAccountSystem(
+                            accountDetails.getCustomerAccountNumber(),
+                            accountSystemEnumConverter.convertToEntityAttribute(accountDetails.getCustomerAccountSystem())
+                    );
 
-                System.out.println("ACCOUNT SYSTEM::"+accountSystemEnum+"    === "+accountSystemEnum.name());
-                */
-                Optional<CustomerAccount> optionalCustomerAccount = accountRepository.findByAccountNumberAndAccountSystem(
-                        accountDetails.getCustomerAccountNumber(),
-                        accountSystemEnumConverter.convertToEntityAttribute(accountDetails.getCustomerAccountSystem())
-                );
-
-                if (optionalCustomerAccount.isPresent()) {
-                    System.out.println(optionalCustomerAccount.get());
-                }
+            if (optionalCustomerAccount.isPresent()) {
+                System.out.println(optionalCustomerAccount.get());
             }
         }
 
-        // Fetch Customer based on Name Details
+        /* Fetch Customer based on Name Details i.e First name and Last name */
         if (nameDetails != null) {
 
         }
 
-        // Fetch Customer based on Contact Details
+        /* Fetch Customer based on Contact Details i.e Contact Medium Type and Contact Medium Value */
         if (contactDetails != null) {
 
         }

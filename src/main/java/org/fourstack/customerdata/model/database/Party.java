@@ -18,7 +18,8 @@ import java.time.LocalDateTime;
 public class Party {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "party_id_seq")
+    @SequenceGenerator(name = "party_id_seq", sequenceName = "PARTY_ID_SEQ", initialValue = 1, allocationSize = 1)
     private long partyId;
 
     @Column(name = "party_type", length = 25)

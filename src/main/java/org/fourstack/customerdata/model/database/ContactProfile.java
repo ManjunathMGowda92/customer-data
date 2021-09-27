@@ -19,7 +19,8 @@ import java.time.LocalDateTime;
 public class ContactProfile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_id_seq")
+    @SequenceGenerator(name = "contact_id_seq", sequenceName = "CONTACT_ID_SEQ", initialValue = 1, allocationSize = 1)
     private long contactId;
 
     @Column(name = "customer_id", nullable = false)
