@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Set up the JDK version (JAVA 8)!
+        run: echo Set up the JDK version - JAVA 8
 
       # Set up JDK 8 version
       - name: Set up JDK 8
