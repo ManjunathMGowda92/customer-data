@@ -4,7 +4,7 @@ name: JAVA MAVEN CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Triggers the workflow on push or pull request events
   push:
     branches: 
        - '*'
@@ -31,11 +31,13 @@ jobs:
         run: echo Set up the JDK version - JAVA 8
 
       # Set up JDK 8 version
+      # Cache the maven dependencies to speed up the process.
       - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
            java-version: '8'
            distribution: 'adopt'
+           cache: maven
            
       # Run the Maven build
       - name: Build with Maven
