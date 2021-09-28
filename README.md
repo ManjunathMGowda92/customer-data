@@ -1,3 +1,3 @@
 # customer-data
 
-Customer Data Repository which holds the customer data.
+CUSTOMER DATA Repository which holds the customer data.
