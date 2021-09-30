@@ -40,14 +40,14 @@ public class Party {
     @Column(name = "secondary_location")
     private String secondaryLocation;
 
-    @Column(name = "create_usr")
+    @Column(name = "create_usr", length = 50, nullable = false)
     private String createUser;
 
     @CreationTimestamp
     @Column(name = "create_date", nullable = false, updatable = false)
     private LocalDateTime createDate;
 
-    @Column(name ="mod_usr")
+    @Column(name ="mod_usr", length = 50)
     private String modifiedUser;
 
     @UpdateTimestamp

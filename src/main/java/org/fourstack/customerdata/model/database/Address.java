@@ -33,24 +33,23 @@ public class Address {
 	@Column(name = "state_or_province", length = 50)
 	private String stateOrProvince;
 
-	@Column(name = "country")
+	@Column(name = "country", length = 50)
 	private String country;
 
-	@Column(name = "postal_code")
+	@Column(name = "postal_code", length = 10)
 	private String postalCode;
 
 	@Column(name = "is_primary_address")
 	private boolean isPrimaryAddress;
 
-
-	@Column(name = "create_usr")
+	@Column(name = "create_usr", length = 50)
 	private String createUser;
 
 	@CreationTimestamp
 	@Column(name = "created_date", nullable = false, updatable = false)
 	private LocalDateTime createDate;
 
-	@Column(name = "mod_usr")
+	@Column(name = "mod_usr", length = 50)
 	private String modifiedUser;
 
 	@Column(name = "mod_date", nullable = true, updatable = true)

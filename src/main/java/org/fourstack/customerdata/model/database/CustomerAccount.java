@@ -28,7 +28,7 @@ public class CustomerAccount {
 	@Column(name = "customer_id", nullable = false)
 	private long customerId;
 
-	@Column(name = "account_num", nullable = false)
+	@Column(name = "account_num", nullable = false, length = 25, unique = true)
 	private String accountNumber;
 
 	@Column(name = "account_system", nullable = false, length = 25)
@@ -45,15 +45,14 @@ public class CustomerAccount {
 	@Column(name = "account_end_date", nullable = false, updatable = true)
 	private LocalDateTime accountEndDate;
 
-
-	@Column(name = "create_usr")
+	@Column(name = "create_usr", length = 50)
 	private String createUser;
 
 	@CreationTimestamp
 	@Column(name = "create_date", nullable = false, updatable = false)
 	private LocalDateTime createDate;
 
-	@Column(name = "mod_usr")
+	@Column(name = "mod_usr", length = 50)
 	private String modifiedUser;
 
 	@UpdateTimestamp

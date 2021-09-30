@@ -32,23 +32,23 @@ public class ContactProfile {
     @Column(name = "contact_name")
     private String contactName;
 
-    @Column(name = "contact_medium_type", length = 25)
+    @Column(name = "contact_medium_type", length = 25, nullable = false)
     private ContactMediumType contactMediumType;
 
     @Column(name = "contact_medium_subtype", length = 25)
     private ContactMediumSubType contactMediumSubType;
 
-    @Column(name = "contact_medium_value")
+    @Column(name = "contact_medium_value", nullable = false)
     private String contactMediumValue;
 
-    @Column(name = "create_usr")
+    @Column(name = "create_usr", length = 50)
     private String createUser;
 
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDateTime createDate;
 
-    @Column(name = "mod_usr")
+    @Column(name = "mod_usr", length = 50)
     private String modifiedUser;
 
     @UpdateTimestamp
