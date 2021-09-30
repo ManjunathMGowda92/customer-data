@@ -44,7 +44,7 @@ public class Customer {
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Column(name = "create_usr")
+	@Column(name = "create_usr", length = 50)
 	private String createUser;
 
 	@JsonIgnore
@@ -55,7 +55,7 @@ public class Customer {
 
 	@JsonIgnore
 	@Getter(value = AccessLevel.NONE)
-	@Column(name = "mod_usr")
+	@Column(name = "mod_usr", length = 50)
 	private String modifiedUser;
 
 	@JsonIgnore
