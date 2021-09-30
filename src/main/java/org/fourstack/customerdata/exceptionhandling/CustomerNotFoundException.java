@@ -1,12 +1,14 @@
 package org.fourstack.customerdata.exceptionhandling;
 
 /**
- * Class {@link CustomerNotFoundException} is a child class of {@link RuntimeException},
+ * Class {@link CustomerNotFoundException} is a child class of {@link CustomerDataBaseException},
  * which is used throw the exception when the requested customer not found in Database.
  *
  * @author Manjunath HM
  */
-public class CustomerNotFoundException extends RuntimeException {
+public class CustomerNotFoundException extends CustomerDataBaseException {
+    private static final long serialVersionUID = -2294258439085812493L;
+
     public CustomerNotFoundException() {
     }
 
