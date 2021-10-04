@@ -25,7 +25,8 @@ public class CustomerController {
     }
 
     @PostMapping("/v1/customers/retrieveCustomer")
-    public ResponseEntity<List<CustomerResponse>> retrieveCustomerData(@RequestBody RetrieveDataRequest request) {
+    public ResponseEntity<List<CustomerResponse>> retrieveCustomerData(
+            @RequestBody RetrieveDataRequest request) {
         return new ResponseEntity<List<CustomerResponse>>(
                 this.customerService.retrieveCustomerData(request),
                 HttpStatus.OK
@@ -33,7 +34,8 @@ public class CustomerController {
     }
 
     @PostMapping("/v1/customers/createCustomerPartial")
-    public ResponseEntity<CustomerDataResponse> createCustomerData(@RequestBody AccountCreationRequest request) {
+    public ResponseEntity<CustomerDataResponse> createCustomerData(
+            @RequestBody AccountCreationRequest request) {
         return new ResponseEntity<CustomerDataResponse>(
                 this.customerService.createCustomerData(request),
                 HttpStatus.CREATED
@@ -42,7 +44,8 @@ public class CustomerController {
 
 
     @PostMapping("/v1/customers/createCustomer")
-    public ResponseEntity<CustomerDataResponse> createCustomerDataComplete(@RequestBody CompleteAccountCreationRequest request) {
+    public ResponseEntity<CustomerDataResponse> createCustomerDataComplete(
+            @RequestBody CompleteAccountCreationRequest request) {
         return new ResponseEntity<CustomerDataResponse>(
                 this.customerService.createCustomerDataComplete(request),
                 HttpStatus.CREATED

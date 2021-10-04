@@ -14,5 +14,6 @@ public interface CustomerService {
 
     CustomerDataResponse createCustomerData(AccountCreationRequest request);
 
-    CustomerDataResponse createCustomerDataComplete (CompleteAccountCreationRequest request);
+    CustomerDataResponse createCustomerDataComplete (
+            CompleteAccountCreationRequest request);
 }

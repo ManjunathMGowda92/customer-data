@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CustomerAccountRepository extends JpaRepository<CustomerAccount, Long> {
+public interface CustomerAccountRepository extends
+        JpaRepository<CustomerAccount, Long> {
 
-    public Optional<CustomerAccount> findByAccountNumberAndAccountSystem(String accountNumber, AccountSystem accountSystem);
+    public Optional<CustomerAccount>
+    findByAccountNumberAndAccountSystem(String accountNumber,
+                                        AccountSystem accountSystem);
 }

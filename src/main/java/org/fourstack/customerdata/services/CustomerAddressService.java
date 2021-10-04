@@ -5,7 +5,9 @@ import org.fourstack.customerdata.model.response.CustomerDataResponse;
 
 public interface CustomerAddressService {
 
-    CustomerDataResponse addCustomerAddress(String accountNum, AddressRequest address);
+    CustomerDataResponse addCustomerAddress(String accountNum,
+                                            AddressRequest address);
 
-    CustomerDataResponse updateCustomerAddress(String accountNum, AddressRequest address);
+    CustomerDataResponse updateCustomerAddress(String accountNum,
+                                               AddressRequest address);
 }

@@ -10,12 +10,14 @@ import java.util.List;
 public class ContactProfileServiceImpl implements ContactProfileService {
 
     @Override
-    public CustomerDataResponse createContactProfiles(String accountNumber, List<ContactRequest> contactList) {
+    public CustomerDataResponse createContactProfiles(String accountNumber,
+                                          List<ContactRequest> contactList) {
         return null;
     }
 
     @Override
-    public CustomerDataResponse updateContactProfiles(String accountNumber, List<ContactRequest> contactList) {
+    public CustomerDataResponse updateContactProfiles(String accountNumber,
+                                          List<ContactRequest> contactList) {
         return null;
     }
 }
