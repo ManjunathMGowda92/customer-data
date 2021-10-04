@@ -42,7 +42,7 @@ public class CustomerAccount {
 	@Column(name = "customer_id", nullable = false)
 	private long customerId;
 
-	@Column(name = "account_num", nullable = false, length = 25, unique = true)
+	@Column(name = "account_num", nullable = false, length = 25)
 	private String accountNumber;
 
 	@Column(name = "account_system", nullable = false, length = 25)
