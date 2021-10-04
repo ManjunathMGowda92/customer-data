@@ -28,8 +28,16 @@ public class Customer {
 	 * for customer_id, used sequence generator.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_seq")
-	@SequenceGenerator(name = "customer_id_seq", initialValue = 1, sequenceName = "CUSTOMER_ID_SEQ", allocationSize = 1)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "customer_id_seq"
+	)
+	@SequenceGenerator(
+			name = "customer_id_seq",
+			initialValue = 1,
+			sequenceName = "CUSTOMER_ID_SEQ",
+			allocationSize = 1
+	)
 	@Column(name = "customer_id")
 	private long customerId;
 

@@ -18,8 +18,9 @@ public class ContactProfileController {
     private ContactProfileService contactProfileService;
 
     @PostMapping("/v1/customer/{customer-account-num}/contact")
-    public ResponseEntity<CustomerDataResponse> addCustomerContactProfile(@PathVariable("customer-account-num") String accountNum,
-                                                                          @RequestBody List<ContactRequest> contactProfiles) {
+    public ResponseEntity<CustomerDataResponse> addCustomerContactProfile(
+            @PathVariable("customer-account-num") String accountNum,
+            @RequestBody List<ContactRequest> contactProfiles) {
         return new ResponseEntity<CustomerDataResponse>(
                 contactProfileService.createContactProfiles(accountNum, contactProfiles),
                 HttpStatus.CREATED
@@ -28,8 +29,9 @@ public class ContactProfileController {
 
 
     @PatchMapping("/v1/customer/{customer-account-num}/contact")
-    public ResponseEntity<CustomerDataResponse> patchCustomerContactProfile(@PathVariable("customer-account-num") String accountNum,
-                                                                            @RequestBody List<ContactRequest> contactProfiles) {
+    public ResponseEntity<CustomerDataResponse> patchCustomerContactProfile(
+            @PathVariable("customer-account-num") String accountNum,
+            @RequestBody List<ContactRequest> contactProfiles) {
         return new ResponseEntity<CustomerDataResponse>(
                 contactProfileService.updateContactProfiles(accountNum, contactProfiles),
                 HttpStatus.OK
