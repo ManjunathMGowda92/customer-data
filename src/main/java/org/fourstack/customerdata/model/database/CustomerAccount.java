@@ -17,7 +17,13 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name ="customer_account")
+@Table(
+		name ="customer_account",
+		uniqueConstraints = {
+				@UniqueConstraint(name = "account_num_unique",
+						columnNames = "account_num")
+		}
+)
 public class CustomerAccount {
 
 	@Id

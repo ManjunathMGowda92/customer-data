@@ -15,7 +15,13 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name = "contact_profile")
+@Table(
+        name = "contact_profile",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "contact_medium_value_unique",
+                columnNames = "contact_medium_value")
+        }
+)
 public class ContactProfile {
 
     @Id
