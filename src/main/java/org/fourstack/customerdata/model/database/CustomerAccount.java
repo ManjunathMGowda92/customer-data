@@ -22,6 +22,18 @@ import javax.persistence.*;
 		uniqueConstraints = {
 				@UniqueConstraint(name = "account_num_unique",
 						columnNames = "account_num")
+		},
+		indexes = {
+				@Index(
+						name = "IDX_CUSTOMER_ACCOUNT",
+						unique = true,
+						columnList = "account_num"
+				),
+				@Index(
+						name = "IDX_CUSTOMER_ACCT_SYS",
+						unique = true,
+						columnList = "account_num, account_system"
+				)
 		}
 )
 public class CustomerAccount {

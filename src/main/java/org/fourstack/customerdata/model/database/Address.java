@@ -13,7 +13,11 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name = "address")
+@Table(name = "address", indexes = @Index(
+		name = "IDX_CITY_COUNTRY_ZIP",
+		unique = false,
+		columnList = "city, country, postal_code"
+))
 public class Address {
 
 	@Id

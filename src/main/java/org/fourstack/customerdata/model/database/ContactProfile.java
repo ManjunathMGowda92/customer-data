@@ -20,7 +20,12 @@ import java.time.LocalDateTime;
         uniqueConstraints = {
                 @UniqueConstraint(name = "contact_medium_value_unique",
                 columnNames = "contact_medium_value")
-        }
+        },
+        indexes = @Index(
+                name = "IDX_CONTACT_VALUE",
+                unique = true,
+                columnList = "contact_medium_type, contact_medium_value"
+        )
 )
 public class ContactProfile {
 
