@@ -14,7 +14,25 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name = "party")
+@Table(name = "party",
+    indexes = {
+        @Index(
+                name = "IDX_FIRST_LAST_NAME",
+                unique = false,
+                columnList = "first_name, last_name"
+        ),
+        @Index(
+                name = "IDX_PRIMARY_LOCATION",
+                unique = false,
+                columnList = "primary_location"
+        ),
+        @Index(
+                name = "IDX_SECONDARY_LOCATION",
+                unique = false,
+                columnList = "secondary_location"
+            )
+    }
+)
 public class Party {
 
     @Id
